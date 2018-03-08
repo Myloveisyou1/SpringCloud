@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.jm</groupId>
+	<artifactId>jm-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<packaging>pom</packaging><!--父类的打包方式必须是pom-->
+
+	<!--这里配置的是子项目-->
+	<modules>
+		<module>jm-api</module>
+		<module>jm-wages</module>
+	</modules>
+
+	<name>jm-parent</name>
+	<description>Demo project for Spring Boot</description>
+
+	<!-- parent指明继承关系，给出被继承的父项目的具体信息-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.0.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+
+		<!-- 在properties中统一控制依赖包的版本，更清晰 子项目就不用再写版本号-->
+		<jm-api.version>1.0</jm-api.version>
+		<jm-wages.version>1.0</jm-wages.version>
+	</properties>
+
+	<dependencies>
+		<!--删除spring-boot-starter和spring-boot-starter-test，
+            因为parent中继承的祖先中已经有了，并且一般dependencyManagement管理的依赖都要写版本号 -->
+		<!--<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>-->
+		<dependency>
+			<groupId>com.jm</groupId>
+			<artifactId>jm-api</artifactId>
+			<version>${jm-api.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jm</groupId>
+			<artifactId>jm-wages</artifactId>
+			<version>${jm-wages.version}</version>
+		</dependency>
+	</dependencies>
+
+	<!--该插件作用是打一个可运行的包，必须要写在需要打包的项目里。这里的父模块不需要打包运行，所以删掉该插件。-->
+	<!--<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>-->
+
+
+</project>
