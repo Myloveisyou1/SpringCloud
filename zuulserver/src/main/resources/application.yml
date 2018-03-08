@@ -1,0 +1,17 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  application:
+    name: zuulserver
+zuul:
+  routes:
+    api-a:
+      path: /wagesystem/**
+      serviceId: wagesystem
+    api-b:
+      path: /farmsystem/**
+      serviceId: farmsystem
