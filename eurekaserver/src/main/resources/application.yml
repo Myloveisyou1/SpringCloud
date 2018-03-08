@@ -10,6 +10,7 @@ eureka:
   #表明自己是一个eureka server.
     registerWithEureka: false
     fetchRegistry: false
+    #访问eureka的地址
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
