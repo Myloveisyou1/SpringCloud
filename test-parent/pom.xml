@@ -7,10 +7,7 @@
     <groupId>com</groupId>
     <artifactId>test-parent</artifactId>
     <version>1.0</version>
-    <modules>
-        <module>test-utils</module>
-        <module>test-wages</module>
-    </modules>
+
     <!--主项目的打包方式为pom-->
     <packaging>pom</packaging>
 
@@ -21,4 +18,77 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <modules>
+        <module>test-utils</module>
+        <module>test-wages</module>
+    </modules>
+
+    <!--统一控制依赖的版本-->
+    <properties>
+        <poi.version>3.11</poi.version>
+        <mail.version>1.6.1</mail.version>
+        <pinyin4j.version>2.5.0</pinyin4j.version>
+        <commons.logging.version>1.2</commons.logging.version>
+        <base64.version>1.11</base64.version>
+        <http.version>4.3.6</http.version>
+
+    </properties>
+    <!--1：如果dependencies里的dependency自己没有声明version元素，那么maven就
+    会倒dependencyManagement里面去找有没有对该artifactId和groupId进行过版本声明，如果有，就继承它，如果
+    没有就会报错，告诉你必须为dependency声明一个version
+    2：如果dependencies中的dependency声明了version，那么无论dependencyManagement中有无对该jar的version声明，都以dependency里的version为准。
+     -->
+    <dependencyManagement>
+        <dependencies>
+            <!--导出Excel-->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+            <!--发送邮件-->
+            <dependency>
+                <groupId>javax.mail</groupId>
+                <artifactId>javax.mail-api</artifactId>
+                <version>${mail.version}</version>
+            </dependency>
+            <!--汉字转拼音-->
+            <dependency>
+                <groupId>com.belerweb</groupId>
+                <artifactId>pinyin4j</artifactId>
+                <version>${pinyin4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-logging</groupId>
+                <artifactId>commons-logging</artifactId>
+                <version>${commons.logging.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${base64.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${http.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient-cache</artifactId>
+                <version>${http.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpmime</artifactId>
+                <version>${http.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 </project>
