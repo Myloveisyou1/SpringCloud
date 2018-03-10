@@ -1,4 +1,4 @@
-eureka:
+ï»¿eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
@@ -6,4 +6,8 @@ server:
   port: 8762
 spring:
   application:
-    name: wagesystem #±íÃ÷¸Ã·şÎñµÄÃû³Æ
+    name: wagesystem #è¡¨æ˜è¯¥æœåŠ¡çš„åç§°
+#å¯åŠ¨springcloudçš„hystrixæ–­è·¯å™¨
+feign:
+  hystrix:
+    enabled: true

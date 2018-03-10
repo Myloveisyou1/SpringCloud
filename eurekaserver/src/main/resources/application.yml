@@ -1,16 +1,16 @@
-#¶Ë¿ÚºÅ
+ï»¿#ç«¯å£å·
 server:
   port: 8761
 
-#eurekaÅäÖÃ
+#eurekaé…ç½®
 eureka:
   instance:
     hostname: localhost
   client:
-  #±íÃ÷×Ô¼ºÊÇÒ»¸öeureka server.
+  #è¡¨æ˜è‡ªå·±æ˜¯ä¸€ä¸ªeureka server.
     registerWithEureka: false
     fetchRegistry: false
-    #·ÃÎÊeurekaµÄµØÖ·
+    #è®¿é—®eurekaçš„åœ°å€
     serviceUrl:
       defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
 
